@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORARIO JED | Request for Proposal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #005088;
+            --accent-orange: #F29100;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-white: #ffffff;
+            --bg-soft: #f8fafc;
+            --bg-gray: #f1f5f9;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent-orange);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(0, 80, 136, 0.95), rgba(0, 80, 136, 0.8)), url('https://images.unsplash.com/photo-1523050853063-915894612264?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 4rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero .investment-tag {
+            background: var(--accent-orange);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(242, 145, 0, 0.3);
+        }
+
+        .hero .cta-btn {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 2.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hero .cta-btn:hover {
+            background: var(--accent-orange);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero .tagline {
+            margin-top: 3rem;
+            font-style: italic;
+            opacity: 0.8;
+            font-size: 1rem;
+        }
+
+        /* Problem Section */
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--bg-soft);
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border-bottom: 4px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--accent-orange);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .card i {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 1.5rem;
+        }
+
+        .card .stat {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Solution Section */
+        .solution {
+            background-color: var(--bg-soft);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solution-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-points {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .solution-points li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .solution-points li i {
+            color: var(--success);
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .solution-points li h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        /* PESTEL Table */
+        .pestel-table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .pestel-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #1e293b;
+            background: white;
+        }
+
+        .pestel-table td {
+            border: 1px solid #1e293b;
+            padding: 1.5rem;
+            vertical-align: top;
+        }
+
+        .pestel-table td.pestel-category {
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-align: center;
+            vertical-align: middle;
+            width: 150px;
+            color: #000;
+        }
+
+        .pestel-table ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .pestel-table ul li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.4;
+        }
+
+        .pestel-table ul li::before {
+            content: "•";
+            margin-right: 10px;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            color: #000;
+        }
+        
+        .pestel-table ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .pestel-row-p .pestel-category { background-color: #d8edf7; }
+        .pestel-row-e .pestel-category { background-color: #dcf2e3; }
+        .pestel-row-s .pestel-category { background-color: #fdfaf0; }
+        .pestel-row-t .pestel-category { background-color: #fcebd1; }
+        .pestel-row-ec .pestel-category { background-color: #e9e1f2; }
+        .pestel-row-l .pestel-category { background-color: #f7d8d5; }
+
+        /* DOFA */
+        .dofa-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid #d1d5db;
+        }
+
+        .dofa-box {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #d1d5db;
+        }
+
+        .dofa-header {
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+        }
+
+        .dofa-body {
+            padding: 1.5rem 2rem;
+            flex-grow: 1;
+            color: var(--text-dark);
+        }
+
+        .dofa-f .dofa-header { background-color: #1b6d7a; }
+        .dofa-f .dofa-body { background-color: #f0f7f9; }
+        
+        .dofa-d .dofa-header { background-color: #d18738; }
+        .dofa-d .dofa-body { background-color: #fffdf5; }
+
+        .dofa-o .dofa-header { background-color: #358053; }
+        .dofa-o .dofa-body { background-color: #f1fbf4; }
+        
+        .dofa-a .dofa-header { background-color: #8b2024; }
+        .dofa-a .dofa-body { background-color: #fff2f2; }
+
+        .dofa-body ul { 
+            list-style: none; 
+            padding-left: 0; 
+        }
+        .dofa-body ul li { 
+            margin-bottom: 0.8rem; 
+            font-size: 1.05rem; 
+            display: flex;
+            align-items: flex-start;
+        }
+        .dofa-body ul li::before {
+            content: "•";
+            margin-right: 10px;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            color: #333;
+        }
+
+        /* Lean Canvas */
+        .lean-canvas {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .lc-box {
+            background-color: #d8e5f2;
+            border-radius: 12px;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: flex-start;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .lc-box h4 {
+            color: #0b1c31;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .lc-box p {
+            color: #5a6e82;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .lc-box-problema { grid-column: 1 / 2; grid-row: 1 / 3; }
+        .lc-box-solucion { grid-column: 2 / 3; grid-row: 1 / 2; }
+        .lc-box-propuesta { grid-column: 3 / 4; grid-row: 1 / 2; }
+        .lc-box-ventaja { grid-column: 4 / 5; grid-row: 1 / 2; }
+        .lc-box-segmentos { grid-column: 5 / 6; grid-row: 1 / 2; }
+
+        .lc-box-metricas { grid-column: 2 / 3; grid-row: 2 / 3; }
+        .lc-box-concepto { grid-column: 3 / 4; grid-row: 2 / 3; }
+        .lc-box-canales { grid-column: 4 / 5; grid-row: 2 / 3; }
+        .lc-box-early { grid-column: 5 / 6; grid-row: 2 / 3; }
+
+        .lc-box-alternativas { grid-column: 1 / 2; grid-row: 3 / 4; }
+        .lc-box-costes { grid-column: 2 / 4; grid-row: 3 / 4; }
+        .lc-box-ingresos { grid-column: 4 / 6; grid-row: 3 / 4; }
+
+        /* Finance Table */
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:last-child td { border-bottom: none; font-weight: 700; background: var(--bg-gray); }
+        .price-col { color: var(--primary-blue); font-weight: 700; text-align: right; }
+
+        /* Roadmap */
+        .roadmap-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 50px;
+            top: 0;
+            bottom: -3rem;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .roadmap-item:last-child::before { display: none; }
+
+        .month-circle {
+            width: 100px;
+            height: 100px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 2;
+            flex-shrink: 0;
+            border: 8px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .roadmap-content {
+            margin-left: 2rem;
+            background: var(--bg-soft);
+            padding: 1.5rem;
+            border-radius: 10px;
+            flex-grow: 1;
+        }
+
+        /* Risks */
+        .risk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .risk-card {
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--accent-orange);
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .risk-level {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .level-high { background: #fee2e2; color: var(--danger); }
+        .level-mid { background: #fef3c7; color: var(--warning); }
+        .level-low { background: #dcfce7; color: var(--success); }
+
+        /* Risk Matrix */
+        .risk-matrix-container {
+            margin-top: 2rem;
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .risk-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #d1d5db;
+            background: white;
+        }
+
+        .risk-matrix th, .risk-matrix td {
+            border: 1px solid #d1d5db;
+            padding: 1.5rem;
+            vertical-align: top;
+        }
+
+        .risk-matrix th {
+            background-color: #216d7a;
+            color: white;
+            text-align: center;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .risk-matrix .rm-col-header { width: 40%; }
+        .risk-matrix .rm-row-header { width: 20%; vertical-align: middle; }
+
+        .rm-high-high { background-color: #fcd3d3; color: #991b1b; }
+        .rm-high-low { background-color: #fff9c4; color: #000; }
+        .rm-low-high { background-color: #e0f2fe; color: #075985; }
+        .rm-low-low { background-color: #dcfce7; color: #166534; }
+
+        .risk-matrix ul { list-style: disc; padding-left: 1.5rem; margin: 0; }
+        .risk-matrix ul li { margin-bottom: 1rem; font-weight: 600; font-size: 0.95rem; }
+        .risk-matrix ul li:last-child { margin-bottom: 0; }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo h2 { color: white; margin-bottom: 1rem; }
+        .footer-links h4 { color: var(--accent-orange); margin-bottom: 1.5rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links ul li { margin-bottom: 0.8rem; opacity: 0.8; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .solution-grid, .canvas-summary, .footer-grid { grid-template-columns: 1fr; }
+            .pestel-grid { grid-template-columns: repeat(2, 1fr); }
+            .dofa-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .pestel-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.2rem; }
+            .month-circle { width: 70px; height: 70px; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Hero -->
+    <header class="hero">
+        <div class="container">
+            <span class="investment-tag">Inversión Solicitada: $20.000.000 COP</span>
+            <h1>HORARIO JED</h1>
+            <p class="subtitle">Aplicación Web de Gestión de Tiempo Académico</p>
+            <p class="tagline">"El éxito no está en hacer más… está en hacer exactamente lo que se necesita."</p>
+        </div>
+    </header>
+
+    <!-- Problema -->
+    <section id="problema">
+        <div class="container">
+            <div class="section-header">
+                <h2>El Desafío</h2>
+                <p>El sistema actual presenta limitaciones críticas de usabilidad en dispositivos móviles, generando frustración y desaprovechamiento de los intervalos de tiempo entre clases.</p>
+            </div>
+            <div class="problem-cards">
+                <div class="card">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <span class="stat">64%</span>
+                    <p>Estudiantes con responsabilidades laborales externas.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <span class="stat">72%</span>
+                    <p>Reportan dificultades para cumplir fechas de entrega.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-user-slash"></i>
+                    <span class="stat">58%</span>
+                    <p>Tasa de abandono en aplicaciones de productividad genéricas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solución -->
+    <section id="solucion" class="solution">
+        <div class="container">
+            <div class="solution-grid">
+                <div class="solution-text">
+                    <div class="section-header" style="text-align: left;">
+                        <h2>Nuestra Propuesta</h2>
+                        <p>Una Web App Responsive diseñada específicamente para el entorno Luis Amigó.</p>
+                    </div>
+                    <p>HORARIO JED elimina la fricción de configuración manual mediante una capa de integración nativa con el sistema institucional, garantizando el cumplimiento de la <strong>Ley 1581/2012 (Habeas Data)</strong>.</p>
+                </div>
+                <ul class="solution-points">
+                    <li>
+                        <i class="fa-solid fa-sync"></i>
+                        <div>
+                            <h4>Sincronización Nativa</h4>
+                            <p>Actualización automática desde la fuente oficial. Cero configuración manual.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h4>Gestión de "Huecos"</h4>
+                            <p>Identificación inteligente de intervalos libres con recomendaciones de actividades.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bell"></i>
+                        <div>
+                            <h4>Alertas Adaptativas</h4>
+                            <p>Notificaciones personalizadas según carga académica y patrones de usuario.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PESTEL -->
+    <section id="pestel">
+        <div class="container">
+            <div class="section-header">
+                <h2>Análisis Estratégico PESTEL</h2>
+                <p>Evaluación del macroentorno para asegurar la sostenibilidad del proyecto.</p>
+            </div>
+            <div class="pestel-table-container">
+                <table class="pestel-table">
+                    <tbody>
+                        <tr class="pestel-row-p">
+                            <td class="pestel-category">Político</td>
+                            <td>
+                                <ul>
+                                    <li>Políticas de digitalización en educación superior colombiana (MEN)</li>
+                                    <li>Regulación de protección de datos personales (Ley 1581 de 2012 - Habeas Data)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="pestel-row-e">
+                            <td class="pestel-category">Económico</td>
+                            <td>
+                                <ul>
+                                    <li>Bajo costo de desarrollo con tecnologías móviles actuales (React Native)</li>
+                                    <li>Alta proporción de estudiantes con doble rol académico-laboral (64% de la muestra)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="pestel-row-s">
+                            <td class="pestel-category">Social</td>
+                            <td>
+                                <ul>
+                                    <li>Cultura estudiantil con alta adopción de smartphones y apps móviles</li>
+                                    <li>Creciente conciencia sobre salud mental y gestión del estrés académico</li>
+                                    <li>Demanda de herramientas que equilibren vida académica y personal</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="pestel-row-t">
+                            <td class="pestel-category">Tecnológico</td>
+                            <td>
+                                <ul>
+                                    <li>Disponibilidad de APIs y frameworks modernos para desarrollo web</li>
+                                    <li>Tendencia hacia sistemas académicos con arquitecturas abiertas e integrables</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="pestel-row-ec">
+                            <td class="pestel-category">Ecológico</td>
+                            <td>
+                                <ul>
+                                    <li>Reducción del uso de papel en gestión académica como alineación con sostenibilidad</li>
+                                    <li>Optimización del desplazamiento en campus mediante gestión eficiente del tiempo</li>
+                                    <li>Impacto ambiental mínimo al ser una solución puramente digital</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="pestel-row-l">
+                            <td class="pestel-category">Legal</td>
+                            <td>
+                                <ul>
+                                    <li>Cumplimiento con normativa colombiana de protección de datos (Ley 1581/2012)</li>
+                                    <li>Regulación de aplicaciones móviles y propiedad intelectual del software</li>
+                                    <li>Acuerdos de uso de datos institucionales con la universidad para la integración API</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOFA -->
+    <section id="dofa" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Diagnóstico DOFA</h2>
+            </div>
+            <div class="dofa-grid">
+                <div class="dofa-box dofa-f">
+                    <div class="dofa-header">FORTALEZAS</div>
+                    <div class="dofa-body">
+                        <ul>
+                            <li>Integración personalizada con sistema académico institucional</li>
+                            <li>Funcionalidad de gestión de huecos sin equivalente en el mercado</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dofa-box dofa-d">
+                    <div class="dofa-header">DEBILIDADES</div>
+                    <div class="dofa-body">
+                        <ul>
+                            <li>Equipo de desarrollo pequeño con recursos limitados</li>
+                            <li>Posible resistencia institucional a la integración de datos</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dofa-box dofa-o">
+                    <div class="dofa-header">OPORTUNIDADES</div>
+                    <div class="dofa-body">
+                        <ul>
+                            <li>Nicho de mercado establecido por estudiantes de pregrado que demandan una gestión específica de "huecos"</li>
+                            <li>Alta alfabetización digital de los estudiantes, ya que han usado herramientas como google calendar, facilitando la curva de adaptación.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dofa-box dofa-a">
+                    <div class="dofa-header">AMENAZAS</div>
+                    <div class="dofa-body">
+                        <ul>
+                            <li>Competencia de apps generalistas consolidadas</li>
+                            <li>Alta tasa de abandono histórica en apps de productividad</li>
+                            <li>Posibles cambios en la plataforma del sistema institucional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lean Canvas -->
+    <section id="canvas">
+        <div class="container">
+            <div class="section-header">
+                <h2>Modelo de Negocio – Lean Canvas</h2>
+                <p>Estructura estratégica construida para escalar.</p>
+            </div>
+            
+            <div class="lean-canvas">
+                <div class="lc-box lc-box-problema">
+                    <h4>Problema</h4>
+                    <p>Muchos estudiantes universitarios tienen problemas para organizar su tiempo debido a horarios fragmentados y múltiples responsabilidades. Esto genera retrasos en tareas, estrés y bajo rendimiento. Además, las herramientas actuales no se adaptan bien a sus necesidades o son poco prácticas de usar.</p>
+                </div>
+                
+                <div class="lc-box lc-box-solucion">
+                    <h4>Solucion</h4>
+                    <p>Se propone una aplicación móvil y web que organiza automáticamente el tiempo del estudiante, generando horarios personalizados, enviando recordatorios inteligentes y ajustándose a sus hábitos y rutinas diarias.</p>
+                </div>
+                
+                <div class="lc-box lc-box-propuesta">
+                    <h4>Propuesta de Valor Unica</h4>
+                    <p>Una solución que permite organizar el tiempo académico de forma automática, sencilla y personalizada, ayudando a los estudiantes a mejorar su productividad y reducir el estrés.</p>
+                </div>
+                
+                <div class="lc-box lc-box-ventaja">
+                    <h4>Ventaja diferencial</h4>
+                    <p>Cuenta con un algoritmo adaptativo basado en los hábitos del usuario y la integración con sistemas universitarios, lo que permite ofrecer una experiencia más precisa y difícil de replicar.</p>
+                </div>
+                
+                <div class="lc-box lc-box-segmentos">
+                    <h4>Segmento de clientes</h4>
+                    <p>Dirigido a estudiantes universitarios, especialmente aquellos con alta carga académica, horarios irregulares o que combinan estudio con trabajo u otras responsabilidades.</p>
+                </div>
+
+                <div class="lc-box lc-box-metricas">
+                    <h4>Metricas Clave</h4>
+                    <p>Se evaluará el uso frecuente de la aplicación, la cantidad de tareas entregadas a tiempo, la retención de usuarios y el nivel de interacción con recordatorios y funciones de planificación.</p>
+                </div>
+                
+                <div class="lc-box lc-box-concepto">
+                    <h4>Concepto de alto nivel</h4>
+                    <p>Funciona como un asistente inteligente que planifica el tiempo del estudiante, organiza sus actividades y le indica qué hacer en cada momento de forma clara.</p>
+                </div>
+                
+                <div class="lc-box lc-box-canales">
+                    <h4>Canales</h4>
+                    <p>La solución se distribuye a través de una aplicación móvil y una plataforma web, apoyándose en el entorno universitario como principal canal de difusión y acceso a los estudiantes.</p>
+                </div>
+                
+                <div class="lc-box lc-box-early">
+                    <h4>Early adopters</h4>
+                    <p>Estudiantes que ya presentan dificultades para organizar su tiempo y que están dispuestos a probar herramientas digitales que mejoren su productividad académica.</p>
+                </div>
+
+                <div class="lc-box lc-box-alternativas">
+                    <h4>Alternativas</h4>
+                    <p>Actualmente, los estudiantes utilizan agendas físicas, aplicaciones genéricas o recordatorios manuales. Sin embargo, estas soluciones no se adaptan a sus hábitos ni automatizan la organización del tiempo de manera eficiente.</p>
+                </div>
+                
+                <div class="lc-box lc-box-costes">
+                    <h4>Estructura de costes</h4>
+                    <p>Los costos se concentran en el mantenimiento de servidores y el desarrollo continuo del software para evitar la deserción de usuarios. También se incluyen costos operativos derivados de las pruebas de usabilidad y el refinamiento del algoritmo basado en el tipo de actividades que los estudiantes prefieren hacer en sus huecos estudiar, comer, ocio.</p>
+                </div>
+                
+                <div class="lc-box lc-box-ingresos">
+                    <h4>Flujo de ingresos</h4>
+                    <p>Se plantea un modelo freemium con funciones básicas gratuitas y características avanzadas de pago, además de licencias institucionales para universidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financiero -->
+    <section id="financiero" class="solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>Plan Financiero</h2>
+                <p>Inversión total requerida para el desarrollo y validación del MVP.</p>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rubro</th>
+                            <th>Descripción</th>
+                            <th class="price-col">Monto (COP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Recursos Humanos</td>
+                            <td>Líder, Desarrolladores Full-Stack, UI/UX, QA</td>
+                            <td class="price-col">$16.300.000</td>
+                        </tr>
+                        <tr>
+                            <td>Infraestructura Cloud</td>
+                            <td>Amazon Web Services (AWS) - 6 Meses</td>
+                            <td class="price-col">$4.200.000</td>
+                        </tr>
+                        <tr>
+                            <td>Asesoría Legal</td>
+                            <td>Cumplimiento Ley 1581 y Convenios</td>
+                            <td class="price-col">$650.000</td>
+                        </tr>
+                        <tr>
+                            <td>Materiales y Herramientas</td>
+                            <td>Hardware de pruebas, Figma, Licencias</td>
+                            <td class="price-col">$850.000</td>
+                        </tr>
+                        <tr>
+                            <td>Validación y Difusión</td>
+                            <td>Pruebas de usabilidad y campaña Onboarding</td>
+                            <td class="price-col">$1.050.000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subtotal Costos Directos</strong></td>
+                            <td>Operación Base</td>
+                            <td class="price-col"><strong>$23.050.000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contingencia (10%)</strong></td>
+                            <td>Fondo de Riesgos</td>
+                            <td class="price-col"><strong>$2.305.000</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>PRESUPUESTO TOTAL</strong></td>
+                            <td>Inversión Final</td>
+                            <td class="price-col"><strong>$25.355.000</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2>Cronograma del Proyecto</h2>
+                <p>Fases de ejecución del Mínimo Producto Viable a 6 meses.</p>
+            </div>
+            <div class="roadmap-container">
+                <div class="roadmap-item">
+                    <div class="month-circle">MES 1</div>
+                    <div class="roadmap-content">
+                        <h4>Fase 1: Inicio, Arquitectura y Marco Legal</h4>
+                        <p>Constitución del equipo, reunión de kickoff (API Horario JED), trámite legal de convenio de datos y diseño de arquitectura técnica.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month-circle">MES 2-3</div>
+                    <div class="roadmap-content">
+                        <h4>Fase 2 y 3: Integración y Módulo de Huecos</h4>
+                        <p>Capa de integración con API institucional, desarrollo del algoritmo de intervalos libres y validación UX con piloto ampliado (20-30 estudiantes).</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month-circle">MES 4-5</div>
+                    <div class="roadmap-content">
+                        <h4>Fase 4 y 5: Recordatorios, Pruebas y Seguridad</h4>
+                        <p>Sistema de recordatorios adaptativos, pruebas de carga (simulación masiva), auditoría de seguridad y campaña de prelanzamiento.</p>
+                    </div>
+                </div>
+                <div class="roadmap-item">
+                    <div class="month-circle">MES 6</div>
+                    <div class="roadmap-content">
+                        <h4>Fase 6: Lanzamiento Oficial y Monitoreo</h4>
+                        <p>Lanzamiento versión 1.0 a la comunidad, monitoreo activo de métricas (adopción/retención), soporte y planificación de la versión 1.1.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Riesgos -->
+    <section id="riesgos" style="background: var(--bg-gray);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Gestión de Riesgos</h2>
+                <p>Matriz de Evento – Causa – Consecuencia (Prioridades Principales).</p>
+            </div>
+            <div class="risk-grid">
+                <div class="risk-card">
+                    <span class="risk-level level-high">Alto Impacto (R1)</span>
+                    <h4>Retrasos por Carga Académica</h4>
+                    <p><strong>Causa:</strong> Equipo con disponibilidad limitada.<br><strong>Mitigación:</strong> Aplicar metodologías ágiles, sprints cortos y seguimiento semanal.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-high">Alto Impacto (R2)</span>
+                    <h4>Alcance Descontrolado</h4>
+                    <p><strong>Causa:</strong> Cambios frecuentes en requerimientos.<br><strong>Mitigación:</strong> Backlog priorizado en Jira/Trello y validación obligatoria del líder.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-mid">Riesgo Técnico (R3)</span>
+                    <h4>Caída de Servicios AWS</h4>
+                    <p><strong>Causa:</strong> Fallos regionales en cloud.<br><strong>Mitigación:</strong> Configurar respaldos y mecanismos de recuperación multi-región.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-mid">Riesgo Externo (R4)</span>
+                    <h4>Restricción Institucional</h4>
+                    <p><strong>Causa:</strong> Cambios normativos de la universidad.<br><strong>Mitigación:</strong> Mantener comunicación constante y formalizar acuerdos de integración.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-low">Vigilar (R5)</span>
+                    <h4>Incremento de Costos Cloud</h4>
+                    <p><strong>Causa:</strong> Picos de tráfico durante matrículas o exámenes.<br><strong>Mitigación:</strong> Configurar alertas de facturación y monitoreo en AWS.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-low">Vigilar (R6)</span>
+                    <h4>Descoordinación del Equipo</h4>
+                    <p><strong>Causa:</strong> Horarios fragmentados y responsabilidades académicas.<br><strong>Mitigación:</strong> Establecer reuniones periódicas y herramientas colaborativas.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-low">Baja Prioridad (R7)</span>
+                    <h4>Incompatibilidad de Librerías</h4>
+                    <p><strong>Causa:</strong> Actualizaciones del ecosistema tecnológico.<br><strong>Respuesta:</strong> Mantener dependencias actualizadas y monitorear versiones.</p>
+                </div>
+                <div class="risk-card">
+                    <span class="risk-level level-low">Baja Prioridad (R8)</span>
+                    <h4>Aparición de Solución Similar</h4>
+                    <p><strong>Causa:</strong> Desarrollo paralelo de herramientas similares.<br><strong>Respuesta:</strong> Fortalecer la propuesta de valor y diferenciación.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: 5rem; text-align: left; margin-bottom: 2rem;">
+                <h2 style="color: #216d7a; font-size: 1.8rem; text-transform: none;">8.1 Matriz de Cuadrantes</h2>
+                <div style="border-bottom: 1px solid #cbd5e1; margin-top: 10px;"></div>
+            </div>
+            <div class="risk-matrix-container">
+                <table class="risk-matrix">
+                    <thead>
+                        <tr>
+                            <th class="rm-row-header" style="background: transparent; border: none;"></th>
+                            <th class="rm-col-header">BAJA PROBABILIDAD</th>
+                            <th class="rm-col-header">ALTA PROBABILIDAD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="rm-row-header">ALTO<br>IMPACTO</th>
+                            <td class="rm-high-low">
+                                <ul>
+                                    <li>Podríamos tener fallas críticas en AWS debido a caídas regionales del servicio, afectando la disponibilidad de la plataforma.(R3)</li>
+                                    <li>Podríamos tener restricciones institucionales debido a cambios en políticas universitarias, afectando el acceso a datos académicos. (R4)</li>
+                                </ul>
+                            </td>
+                            <td class="rm-high-high">
+                                <ul>
+                                    <li>Podríamos tener retrasos en el cronograma debido a la carga académica del equipo, afectando las fechas de entrega.(R1)</li>
+                                    <li>Podríamos tener un crecimiento no controlado del alcance debido a la falta de control del backlog, afectando tiempo y presupuesto. (R2)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="rm-row-header">BAJO<br>IMPACTO</th>
+                            <td class="rm-low-low">
+                                <ul>
+                                    <li>Podríamos tener cambios tecnológicos debido a la depreciación o falta de actualización de librerías, afectando mínimamente el desarrollo.(R7)</li>
+                                    <li>Podríamos tener competencia directa debido al desarrollo de soluciones similares, afectando la diferenciación del producto. (R8)</li>
+                                </ul>
+                            </td>
+                            <td class="rm-low-high">
+                                <ul>
+                                    <li>Podríamos tener aumento en costos AWS debido a picos de tráfico, afectando moderadamente el presupuesto. (R5)</li>
+                                    <li>Podríamos tener dificultades de comunicación debido a horarios fragmentados del equipo, afectando la coordinación interna.(R6)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <h2>TEMPUS</h2>
+                    <p>Transformando la gestión del tiempo académico en la Universidad Católica Luis Amigó.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Equipo</h4>
+                    <ul>
+                        <li>Erick Gregorio Caicedo (Líder)</li>
+                        <li>Cristian Marulanda Londoño</li>
+                        <li>Dilan Alexander Rojas</li>
+                        <li>Julian Ramírez Espinosa</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Institución</h4>
+                    <ul>
+                        <li>Facultad de Ingeniería</li>
+                        <li>Ingeniería de Sistemas</li>
+                        <li>Medellín, Colombia</li>
+                        <li>Docente: Sara Munévar S.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Equipo TEMPUS | Universidad Católica Luis Amigó. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
