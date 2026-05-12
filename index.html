@@ -574,15 +574,50 @@
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 { font-size: 3rem; }
-            .solution-grid, .canvas-summary, .footer-grid { grid-template-columns: 1fr; }
-            .pestel-grid { grid-template-columns: repeat(2, 1fr); }
+            .solution-grid, .footer-grid { grid-template-columns: 1fr; }
+            .solution-grid { gap: 2rem; }
             .dofa-grid { grid-template-columns: 1fr; }
+            
+            .lean-canvas {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .lc-box {
+                grid-column: auto !important;
+                grid-row: auto !important;
+            }
         }
 
         @media (max-width: 600px) {
-            .pestel-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.2rem; }
+            .container { padding: 0 1.5rem; }
+            section { padding: 4rem 0; }
+            
+            .hero { height: auto; padding: 120px 0 80px; }
+            .hero .investment-tag { 
+                font-size: 0.95rem; 
+                padding: 0.6rem 1.2rem;
+                margin-bottom: 1.5rem;
+            }
+            .hero h1 { font-size: 2.4rem; line-height: 1.2; }
+            .hero p.subtitle { font-size: 1.2rem; }
+            
+            .section-header h2 { font-size: 2rem; }
+            
             .month-circle { width: 70px; height: 70px; font-size: 0.8rem; }
+            
+            .card { padding: 2rem 1.5rem; }
+            .card .stat { font-size: 2.5rem; }
+            
+            .team-card { padding: 2rem 1.5rem; }
+            
+            .docente-card { padding: 1.5rem; }
+            
+            .footer-grid { gap: 2rem; }
+        }
+
+        @media (max-width: 430px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .investment-tag { font-size: 0.85rem; }
         }
 
         /* Navbar */
@@ -628,6 +663,21 @@
         }
 
         .navbar-nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu-toggle:hover {
             color: var(--accent-orange);
         }
 
@@ -748,9 +798,62 @@
         }
 
         @media (max-width: 992px) {
-            .navbar-nav { display: none; }
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .navbar-nav {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                padding: 1.5rem 5%;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 1.2rem;
+                border-top: 1px solid var(--border);
+                animation: fadeInDown 0.3s ease-out;
+            }
+
+            .navbar-nav.active {
+                display: flex;
+            }
+
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
             .team-grid { grid-template-columns: 1fr; }
             .docente-card { flex-direction: column; text-align: center; }
+        }
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0077b5;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-btn:hover {
+            background: #005a8a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+            color: white;
         }
     </style>
 </head>
@@ -759,7 +862,10 @@
     <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="navbar-brand">HORARIO <span>JED</span></a>
-        <ul class="navbar-nav">
+        <button class="mobile-menu-toggle" id="menuToggle" aria-label="Abrir menú">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <ul class="navbar-nav" id="navbarNav">
             <li><a href="#problema">Desafío</a></li>
             <li><a href="#solucion">Solución</a></li>
             <li><a href="#pestel">PESTEL</a></li>
@@ -1256,24 +1362,40 @@
                     <h4>Erick Gregorio Caicedo Velazco</h4>
                     <p>Desarrollador Full Stack</p>
                     <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                    <br>
+                    <a href="https://www.linkedin.com/in/erick-gregorio-caicedo-velazco-688445409/" target="_blank" class="linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
                 <div class="team-card">
                     <div class="avatar">CM</div>
                     <h4>Cristian Marulanda Londoño</h4>
                     <p>Desarrollador Full Stack</p>
                     <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                    <br>
+                    <a href="https://www.linkedin.com/in/cristian-marulanda-a92469208?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
                 <div class="team-card">
                     <div class="avatar">DR</div>
                     <h4>Dilan Alexander Rojas Carmona</h4>
                     <p>Desarrollador Full Stack</p>
                     <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                    <br>
+                    <a href="https://www.linkedin.com/in/dilanrojasca/" target="_blank" class="linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
                 <div class="team-card">
                     <div class="avatar">JR</div>
                     <h4>Julian Ramírez Espinosa</h4>
                     <p>Desarrollador Full Stack</p>
                     <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                    <br>
+                    <a href="https://www.linkedin.com/in/julian-ramirez-espinosa-924568409?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="linkedin-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
                 </div>
             </div>
             
@@ -1321,5 +1443,42 @@
         </div>
     </footer>
 
+    <!-- Scripts -->
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navbarNav = document.getElementById('navbarNav');
+        const menuIcon = menuToggle.querySelector('i');
+
+        menuToggle.addEventListener('click', () => {
+            navbarNav.classList.toggle('active');
+            
+            // Toggle icon between bars and xmark
+            if (navbarNav.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.navbar-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarNav.classList.remove('active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbarNav.contains(e.target) && !menuToggle.contains(e.target) && navbarNav.classList.contains('active')) {
+                navbarNav.classList.remove('active');
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+    </script>
 </body>
 </html>
