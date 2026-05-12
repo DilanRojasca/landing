@@ -584,9 +584,193 @@
             .hero h1 { font-size: 2.2rem; }
             .month-circle { width: 70px; height: 70px; font-size: 0.8rem; }
         }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .navbar-brand {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .navbar-brand span {
+            color: var(--accent-orange);
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .navbar-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Adjust sections for fixed navbar */
+        section {
+            padding: 6rem 0 5rem;
+            scroll-margin-top: 70px;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            border: 1px solid #eef2f6;
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .team-card .avatar {
+            width: 80px;
+            height: 80px;
+            background: #00457c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 0 8px #f1f5f9;
+        }
+
+        .team-card h4 {
+            color: #00457c;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .team-card p {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag-fullstack {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eafff2;
+            color: #059669;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        .docente-card {
+            background: #f8fafc;
+            border: 1px solid #eef2f6;
+            border-radius: 12px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+
+        .docente-card .avatar {
+            width: 70px;
+            height: 70px;
+            background: #00457c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: none;
+            margin: 0;
+        }
+
+        .docente-info p.label {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .docente-info h4 {
+            color: #00457c;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .docente-info p.desc {
+            color: #64748b;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-nav { display: none; }
+            .team-grid { grid-template-columns: 1fr; }
+            .docente-card { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">HORARIO <span>JED</span></a>
+        <ul class="navbar-nav">
+            <li><a href="#problema">Desafío</a></li>
+            <li><a href="#solucion">Solución</a></li>
+            <li><a href="#pestel">PESTEL</a></li>
+            <li><a href="#dofa">DOFA</a></li>
+            <li><a href="#canvas">Canvas</a></li>
+            <li><a href="#financiero">Financiero</a></li>
+            <li><a href="#roadmap">Cronograma</a></li>
+            <li><a href="#riesgos">Riesgos</a></li>
+            <li><a href="#equipo">Conócenos</a></li>
+        </ul>
+    </nav>
 
     <!-- Header / Hero -->
     <header class="hero">
@@ -1055,6 +1239,51 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conócenos / Equipo -->
+    <section id="equipo" style="background: var(--bg-soft);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Conócenos</h2>
+                <p>El equipo detrás de HORARIO JED.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="avatar">EC</div>
+                    <h4>Erick Gregorio Caicedo Velazco</h4>
+                    <p>Desarrollador Full Stack</p>
+                    <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">CM</div>
+                    <h4>Cristian Marulanda Londoño</h4>
+                    <p>Desarrollador Full Stack</p>
+                    <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">DR</div>
+                    <h4>Dilan Alexander Rojas Carmona</h4>
+                    <p>Desarrollador Full Stack</p>
+                    <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">JR</div>
+                    <h4>Julian Ramírez Espinosa</h4>
+                    <p>Desarrollador Full Stack</p>
+                    <span class="tag-fullstack"><i class="fa-solid fa-laptop-code"></i> Full Stack</span>
+                </div>
+            </div>
+            
+            <div class="docente-card">
+                <div class="avatar"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="docente-info">
+                    <p class="label">Docente Guía</p>
+                    <h4>Sara Munévar Salcedo</h4>
+                    <p class="desc">Formulación y Evaluación de Proyectos · Facultad de Ingeniería y Tecnología · 2026-01</p>
+                </div>
             </div>
         </div>
     </section>
